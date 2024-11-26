@@ -1,0 +1,68 @@
+{
+  "project_info": {
+    "project_number": "918842897104",
+    "firebase_url": "https://infoloker-1c466-default-rtdb.asia-southeast1.firebasedatabase.app",
+    "project_id": "infoloker-1c466",
+    "storage_bucket": "infoloker-1c466.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:918842897104:android:2777068e253188a601a4d5",
+        "android_client_info": {
+          "package_name": "com.valesia.crudadmin"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC92b71pOVxs7zUFShLTnW6pR8rK2vao5s"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:918842897104:android:eefeb7ca6ced0c4f01a4d5",
+        "android_client_info": {
+          "package_name": "com.valesia.infoloker"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC92b71pOVxs7zUFShLTnW6pR8rK2vao5s"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:918842897104:android:d3a5f20e9bb976c201a4d5",
+        "android_client_info": {
+          "package_name": "com.valesia.loker"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC92b71pOVxs7zUFShLTnW6pR8rK2vao5s"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
