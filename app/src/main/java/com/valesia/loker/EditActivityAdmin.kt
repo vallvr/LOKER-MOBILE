@@ -33,13 +33,13 @@ class EditActivityAdmin : AppCompatActivity() {
         }
 
         // Data untuk Spinner jenis pekerjaan
-        val jenisList = listOf("Pilih Jenis Pekerjaan", "Full Time", "Part Time", "Freelance", "Internship")
+        val jenisList = listOf("Pilih Jenis Pekerjaan", "Penuh Waktu", "Kontrak", "Magang", "Freelance", "Paruh Waktu", "Harian")
         val jenisAdapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, jenisList)
         jenisAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         binding.jenis.adapter = jenisAdapter
 
         // Data untuk Spinner wilayah pekerjaan
-        val wilayahList = listOf("Pilih Wilayah Pekerjaan", "Jakarta", "Bandung", "Surabaya", "Yogyakarta")
+        val wilayahList = listOf("Pilih Wilayah Pekerjaan", "Surakarta", "Boyolali", "Karanganyar", "Klaten", "Sragen", "Wonogiri")
         val wilayahAdapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, wilayahList)
         wilayahAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         binding.wilayah.adapter = wilayahAdapter
