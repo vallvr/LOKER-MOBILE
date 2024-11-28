@@ -16,7 +16,13 @@
         android:theme="@style/Theme.LOKER"
         tools:targetApi="31">
         <activity
+            android:name=".DetailDataPelamarActivity"
+            android:exported="false" />
+        <activity
             android:name=".DataPelamarActivity"
+            android:exported="false" />
+        <activity
+            android:name=".DataPelamar"
             android:exported="false" />
         <activity
             android:name=".LoginActivity"

@@ -27,8 +27,15 @@ class LamarPekerjaanActivity : AppCompatActivity() {
             val emailPelamar = binding.editEmailPelamar.text.toString()
             val cvLink = binding.editCvLink.text.toString()
 
+            // Validasi input
             if (namaPelamar.isEmpty() || emailPelamar.isEmpty() || cvLink.isEmpty()) {
                 Toast.makeText(this, "Harap isi semua field.", Toast.LENGTH_SHORT).show()
+            } else if (!android.util.Patterns.WEB_URL.matcher(cvLink).matches()) {
+                // Validasi URL
+                Toast.makeText(this, "Harap masukkan link CV yang valid.", Toast.LENGTH_SHORT).show()
+            } else if (!emailPelamar.endsWith("@gmail.com")) {
+                // Validasi email agar hanya dapat menggunakan domain @gmail.com
+                Toast.makeText(this, "Email harus menggunakan domain @gmail.com.", Toast.LENGTH_SHORT).show()
             } else {
                 // Kirim data pelamar ke Firebase
                 kirimLamaran(namaPekerjaan, namaPelamar, emailPelamar, cvLink)

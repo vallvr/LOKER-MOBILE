@@ -26,6 +26,12 @@ class MainActivity2 : AppCompatActivity() {
             startActivity(intent)
         }
 
+        // Event untuk tombol Lihat Data Pelamar
+        binding.btnDataPelamar.setOnClickListener {
+            val intent = Intent(this, DataPelamarActivity::class.java)
+            startActivity(intent)
+        }
+
         // Tombol Keluar
         binding.tvFooter.setOnClickListener {
             val intent = Intent(this, MainActivity::class.java)

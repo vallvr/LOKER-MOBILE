@@ -8,7 +8,6 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.valesia.loker.databinding.ActivityDetailAdminBinding
 import com.google.firebase.database.FirebaseDatabase
-import com.google.android.gms.tasks.OnFailureListener
 
 class DetailActivityAdmin : AppCompatActivity() {
 
@@ -64,7 +63,19 @@ class DetailActivityAdmin : AppCompatActivity() {
         // Tombol Hapus
         binding.fabDelete.setOnClickListener {
             if (namaPekerjaan != "Nama tidak tersedia") {
-                deleteLokerFromFirebase(namaPekerjaan)
+                // Tampilkan dialog konfirmasi
+                val alertDialog = androidx.appcompat.app.AlertDialog.Builder(this)
+                alertDialog.setTitle("Konfirmasi Hapus")
+                alertDialog.setMessage("Apakah Anda yakin ingin menghapus data \"$namaPekerjaan\"?")
+                alertDialog.setPositiveButton("Ya") { _, _ ->
+                    // Jika pengguna memilih Ya, hapus data
+                    deleteLokerFromFirebase(namaPekerjaan)
+                }
+                alertDialog.setNegativeButton("Batal") { dialog, _ ->
+                    // Jika pengguna memilih Batal, tutup dialog
+                    dialog.dismiss()
+                }
+                alertDialog.create().show()
             } else {
                 Toast.makeText(this, "Nama pekerjaan tidak ditemukan.", Toast.LENGTH_SHORT).show()
             }
