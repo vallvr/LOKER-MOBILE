@@ -23,6 +23,17 @@
         app:searchIcon="@drawable/ic_search"
         android:background="@drawable/search_border"/>
 
+    <TextView
+        android:id="@+id/emptyView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Belum Ada Lamaran, Mohon Maaf"
+        android:textSize="18sp"
+        android:gravity="center"
+        android:visibility="gone"
+        android:layout_centerInParent="true"
+        android:textColor="@android:color/darker_gray"/>
+
     <androidx.recyclerview.widget.RecyclerView
         android:layout_width="match_parent"
         android:layout_height="match_parent"

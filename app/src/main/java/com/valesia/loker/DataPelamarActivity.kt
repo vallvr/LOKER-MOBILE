@@ -2,14 +2,14 @@ package com.valesia.loker
 
 import android.os.Bundle
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.SearchView
-import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.ItemTouchHelper
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.database.*
 import com.valesia.loker.databinding.ActivityDataPelamarBinding
-import androidx.appcompat.app.AlertDialog
-import androidx.recyclerview.widget.RecyclerView
 
 class DataPelamarActivity : AppCompatActivity() {
 
@@ -41,6 +41,13 @@ class DataPelamarActivity : AppCompatActivity() {
                 for (itemSnapshot in snapshot.children) {
                     val pelamar = itemSnapshot.getValue(pelamar::class.java)
                     pelamar?.let { pelamarList.add(it) }
+                }
+
+                // Tampilkan atau sembunyikan emptyView
+                if (pelamarList.isEmpty()) {
+                    binding.emptyView.visibility = android.view.View.VISIBLE
+                } else {
+                    binding.emptyView.visibility = android.view.View.GONE
                 }
 
                 // Setelah data diterima, filter data dan tampilkan di RecyclerView
@@ -95,10 +102,17 @@ class DataPelamarActivity : AppCompatActivity() {
         } else {
             // Jika ada query, cari data yang sesuai
             for (pelamar in pelamarList) {
-                if (pelamar.namaPelamar?.toLowerCase()?.contains(query.toLowerCase()) == true) {
+                if (pelamar.namaPelamar?.lowercase()?.contains(query.lowercase()) == true) {
                     filteredPelamarList.add(pelamar)
                 }
             }
+        }
+
+        // Tampilkan atau sembunyikan emptyView
+        if (filteredPelamarList.isEmpty()) {
+            binding.emptyView.visibility = android.view.View.VISIBLE
+        } else {
+            binding.emptyView.visibility = android.view.View.GONE
         }
 
         // Update RecyclerView setelah data terfilter
@@ -109,11 +123,11 @@ class DataPelamarActivity : AppCompatActivity() {
     private fun showDeleteConfirmationDialog(pelamar: pelamar, position: Int) {
         val builder = AlertDialog.Builder(this)
         builder.setMessage("Apakah Anda yakin ingin menghapus pelamar ${pelamar.namaPelamar}?")
-            .setPositiveButton("Ya") { dialog, id ->
+            .setPositiveButton("Ya") { _, _ ->
                 // Hapus data pelamar dari Firebase jika yakin
                 deletePelamar(pelamar, position)
             }
-            .setNegativeButton("Tidak") { dialog, id ->
+            .setNegativeButton("Tidak") { _, _ ->
                 // Kembalikan item ke dalam RecyclerView jika tidak jadi dihapus
                 adapter.notifyItemChanged(position)
             }

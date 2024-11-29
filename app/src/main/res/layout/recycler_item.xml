@@ -26,8 +26,8 @@
             android:layout_marginStart="20dp"/>
 
         <TextView
-            android:layout_width="80dp"
-            android:layout_height="30dp"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
             android:id="@+id/recJenis"
             android:text="jenis Pekerjan"
             android:layout_toEndOf="@+id/recNama"

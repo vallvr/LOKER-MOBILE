@@ -7,7 +7,6 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.appcompat.widget.SearchView
 import com.google.firebase.database.*
-
 import com.valesia.loker.databinding.ActivitySemuaAdminBinding
 
 class SemuaActivityAdmin : AppCompatActivity() {
@@ -58,6 +57,9 @@ class SemuaActivityAdmin : AppCompatActivity() {
                 filteredList.addAll(dataList)
                 adapter.notifyDataSetChanged()
                 dialog.dismiss()
+
+                // Periksa apakah data kosong
+                checkEmptyData()
             }
 
             override fun onCancelled(error: DatabaseError) {
@@ -99,5 +101,19 @@ class SemuaActivityAdmin : AppCompatActivity() {
             }
         }
         adapter.notifyDataSetChanged() // Perbarui RecyclerView dengan hasil pencarian
+
+        // Periksa apakah data kosong setelah pencarian
+        checkEmptyData()
+    }
+
+    // Function to check if data is empty and show the empty view
+    private fun checkEmptyData() {
+        if (filteredList.isEmpty()) {
+            binding.emptyView.visibility = android.view.View.VISIBLE
+            binding.recyclerView.visibility = android.view.View.GONE
+        } else {
+            binding.emptyView.visibility = android.view.View.GONE
+            binding.recyclerView.visibility = android.view.View.VISIBLE
+        }
     }
 }

@@ -1,11 +1,12 @@
 package com.valesia.loker
 
 import android.os.Bundle
+import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
-import androidx.recyclerview.widget.GridLayoutManager
 import androidx.appcompat.widget.SearchView
+import androidx.recyclerview.widget.GridLayoutManager
 import com.google.firebase.database.*
 import com.valesia.loker.databinding.ActivityMain3Binding
 
@@ -55,6 +56,14 @@ class MainActivity3 : AppCompatActivity() {
                 // Salin data awal ke filteredList
                 filteredList.clear()
                 filteredList.addAll(dataList)
+
+                // Tampilkan atau sembunyikan pesan kosong
+                if (filteredList.isEmpty()) {
+                    binding.emptyView.visibility = View.VISIBLE
+                } else {
+                    binding.emptyView.visibility = View.GONE
+                }
+
                 adapter.notifyDataSetChanged()
                 dialog.dismiss()
             }
@@ -97,6 +106,14 @@ class MainActivity3 : AppCompatActivity() {
                 filteredList.add(dataClass)
             }
         }
+
+        // Tampilkan atau sembunyikan pesan kosong
+        if (filteredList.isEmpty()) {
+            binding.emptyView.visibility = View.VISIBLE
+        } else {
+            binding.emptyView.visibility = View.GONE
+        }
+
         adapter.notifyDataSetChanged() // Perbarui RecyclerView dengan hasil pencarian
     }
 }
